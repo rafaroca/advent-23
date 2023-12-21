@@ -39,3 +39,13 @@
 
 (deftest should-solve-part1
   (is (= 8 (solve-part1 test-input-day1-part1))))
+
+(deftest should-reduce-set-to-lowest-count-of-each-color
+  (is (= {:blue 6 :red 4 :green 2}
+        (min-color-count [{:blue 3 :red 4} {:red 1 :green 2 :blue 6} {:green 2}]))))
+
+(deftest should-compute-power
+  (is (= 48 (power {:blue 6 :red 4 :green 2}))))
+
+(deftest should-solve-part2
+  (is (= 2286 (solve-part2 test-input-day1-part1))))

@@ -47,3 +47,29 @@
       (filter possible-game?)
       (map :game-no)
       (reduce +))))
+
+(defn solve-part1-real-input []
+  (solve-part1 (read-input "resources/input2.txt")))
+
+(defn min-color-count [sets]
+  (reduce #(merge-with max %1 %2) sets))
+
+(defn power [set]
+  (* (:red set 1)
+     (:green set 1)
+     (:blue set 1)))
+
+(defn solve-part2 [lines]
+  (let [games (map parse-line lines)]
+    (->> games
+         (map :sets)
+         (map min-color-count)
+         (map power)
+         (reduce +))))
+
+(defn solve-part2-real-input []
+  (solve-part2 (read-input "resources/input2.txt")))
+
+(comment
+  (solve-part1-real-input)
+  (solve-part2-real-input))
