@@ -1,6 +1,5 @@
 (ns day1-test
-  (:require [clojure.string :as str]
-            [clojure.test :refer :all]
+  (:require [clojure.test :refer :all]
             [day1 :refer :all]))
 
 (def test-input-day1-part1 ["1abc2" "pqr3stu8vwx" "a1b2c3d4e5f" "treb7uchet"])

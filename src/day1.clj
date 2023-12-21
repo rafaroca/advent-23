@@ -1,11 +1,6 @@
 (ns day1
-  (:require [clojure.string :as str])
+  (:require [core :refer [read-input]])
   (:gen-class))
-
-(defn read-input [file-name]
-  (-> file-name
-      slurp
-      str/split-lines))
 
 (defn triml-non-num [s]
   (drop-while #(not (Character/isDigit ^Character %)) s))
@@ -63,7 +58,7 @@
        (map line-to-calibration-values)
        (reduce +)))
 
-(defn -main [& args]
+(defn -main [& _]
   (let [lines (read-input "resources/input1.txt")
         calibration-values (map line-to-calibration-values lines)]
     (prn (reduce + calibration-values))))
