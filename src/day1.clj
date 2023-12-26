@@ -1,6 +1,5 @@
 (ns day1
-  (:require [core :refer [read-input]])
-  (:gen-class))
+  (:require [core :refer [read-input]]))
 
 (defn triml-non-num [s]
   (drop-while #(not (Character/isDigit ^Character %)) s))
