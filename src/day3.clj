@@ -68,9 +68,9 @@
         y-max (min LINE-LENGTH y2)
         chars-in-rectangle (for [y (range y-min (inc y-max))
                                  x (range x-min (inc x-max))]
-                             (get-char lines x y))]
+                             (str (get-char lines x y) "-" x "-" y))]
     (->> chars-in-rectangle
-         (filter #(and (not= \. %) (not (Character/isDigit ^Character %)))))))
+         (remove (partial re-find #"^\.|^\d")))))
 
 (defn enhance-number-with-symbol [lines number]
   (let [{:keys [x y length]} number
