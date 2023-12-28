@@ -29,5 +29,13 @@
 (deftest should-solve-part1
   (is (= 13 (solve-part1 test-input))))
 
-(comment
-  (separate-card-no (first test-input)))
+(deftest should-inc-count
+  (is (= [1 3 1] (inc-count 2 [1 1 1] 1))))
+
+(deftest should-calculate-card-winnings
+  (is (= [1 3 4 4] (calculate-card-winnings [1 2 3 4]
+                                            {:card-no 1
+                                             :matches #{86 48}}))))
+
+(deftest should-solve-part2
+  (is (= 30 (solve-part2 test-input))))

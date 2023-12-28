@@ -36,6 +36,27 @@
     (map :points)
     (reduce +)))
 
+(defn inc-count [current-count counts idx]
+  (update counts idx #(+ current-count %)))
+
+(defn calculate-card-winnings [counts {:keys [card-no matches]}]
+  (let [card-idx (dec card-no)
+        card-count (count counts)
+        match-count (count matches)
+        max-idx (min (dec card-count) (+ card-idx match-count))
+        current-count (get counts card-idx)
+        inc-idxs (range (inc card-idx) (inc max-idx))]
+    (reduce (partial inc-count current-count) counts inc-idxs)))
+
+(defn solve-part2 [lines]
+  (->> lines
+    (map separate-card-no)
+    (map parse-numbers)
+    (map extract-matches)
+    (reduce calculate-card-winnings (vec (repeat (count lines) 1)))
+    (reduce +)))
+
 (comment
   (def input (read-input "resources/input4.txt"))
-  (solve-part1 (read-input "resources/input4.txt")))
+  (solve-part1 (read-input "resources/input4.txt"))
+  (solve-part2 (read-input "resources/input4.txt")))
