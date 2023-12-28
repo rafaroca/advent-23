@@ -1,3 +1,4 @@
-{:paths ["src" "resources"]
- :deps {clj-http/clj-http {:mvn/version "3.12.3"}}
+{:paths   ["src" "resources"]
+ :deps    {clj-http/clj-http {:mvn/version "3.12.3"}
+           hashp/hashp       {:mvn/version "0.2.2"}}
  :aliases {:download {:exec-fn core/-main}}}
